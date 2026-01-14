@@ -1,0 +1,15 @@
+# Docker compose to run Go backend and Next frontend
+
+services:
+  backend:
+    # Use Dockerfile in backend
+    build: ./backend
+    # Serve GraphQL at this port
+    ports:
+      - "8080:8080"
+  frontend:
+    # Use Dockerfile in frontend
+    build: ./frontend
+    # Serve Next app at this port
+    ports:
+      - "3000:3000"

@@ -1,0 +1,9 @@
+cff-version: 0.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Street"
+  given-names: "Lauren"
+title: "Web App Guide"
+version: 0.1.0
+date-released: 2025-01-14
+url: "https://github.com/anima-kit/web-app-guide"
