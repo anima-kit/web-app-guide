@@ -1,20 +1,35 @@
 # 🌐 Web App Guide
 
-A step-by-step instruction manual for creating a simple web app with [Next][next] on the frontend and [Go][go] + [gqlgen][gqlgen] on the backend. This guide was created so that I could have a template for a quick web app scaffolding.
+A web app template for integrating [Next][next] on the frontend and [Go][go], [gqlgen][gqlgen], and [LangChain][langchain] on the backend. This guide was created so that I could have a template for a quick web app scaffolding.
 
-You can also check out my more [in-depth tutorial][tutorial] to see how to integrate the Go + gqlgen logic with Next.
+You can also check out my more [in-depth tutorial][tutorial] to see how to integrate the Go + gqlgen logic with Next. Stay tuned for a tutorial discussing how to integrate the LangChain agent logic. 
 
 ## 🏁 Getting started
 
-You can interact with this repo in a couple of ways. 
-
-(**Option 1**):  The simplest option is to clone the repo for all the necessary files that go into building a basic web app. You can then use this README as a template for how to set up your own web apps.
+Clone the repo and navigate there:
 
 ```
 git clone https://github.com/anima-kit/web-app-guide.git
+cd web-app-guide
 ```
 
-(**Option 2**).  Another option is to create a simplified version of this repo yourself by following all the steps outlined below (see more steps in the [tutorial here][tutorial]). 
+Create .env file for LLM parameters:
+
+```
+cp ./frontend/.env.example ./frontend/.env
+```
+
+Build and run Docker containers:
+
+```
+docker compose up --build
+```
+
+Now the frontend should be running on http://localhost:3000 and the GraphQL backend on http://localhost:8080/. By default, this app uses a local [LM Studio][lm-studio] server to host LLMs which runs on http://locahost:1234.
+
+## 🛠️ Build scaffold by hand
+
+Below are some instructions for building the Next frontend and Go backend by hand. You can also see more details in the [tutorial here][tutorial].  
 
 First, create a space for your project.
 
@@ -123,6 +138,8 @@ Thanks to all the projects that make this possible:
 - [golangci-lint][golangci-lint]: Backend formatting and linting
 - [gqlgen][gqlgen]: GraphQL on the backend
 - [GraphQL][graphql]: Query logic APIs
+- [LangChain][langchain]: Agent functionality
+- [LM Studio][lm-studio]: Local hosting of LLM server
 - [Next][next]: Frontend logic
 - [Prettier][prettier]: Frontend formatting
 - [Tailwind][tailwind]: CSS customization
@@ -150,7 +167,9 @@ This project is [licensed under MIT][license].
 [graphql]: https://graphql.org/
 [graphql-playground]: https://graphql.org/swapi-graphql/
 [jest]: https://jestjs.io/docs/next/testing-frameworks
+[langchain]: https://www.langchain.com/
 [license]: LICENSE
+[lm-studio]: https://lmstudio.ai/
 [next]: https://nextjs.org/
 [npm-install]: https://nodejs.org/en/download/
 [postgres]: https://www.postgresql.org/

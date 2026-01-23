@@ -13,3 +13,6 @@ services:
     # Serve Next app at this port
     ports:
       - "3000:3000"
+    # Add LLM base URL to work in containers
+    environment:
+      - LLM_URL=http://host.docker.internal:1234/v1

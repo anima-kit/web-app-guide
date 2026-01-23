@@ -1,18 +1,45 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useCloseModal } from "@/components/modal/useCloseModal";
 import { ModalProps } from "@/types/modal";
 
 // Reusable modal component showing a pop-up box for addition, updating (etc.) forms
 export const Modal: React.FC<ModalProps> = ({
   open,
-  onClose,
   title,
   children,
+  onSubmit,
+  onClose,
 }) => {
+  // Focus first interactive element when modal opens
+  useEffect(() => {
+    if (open && modalRef.current) {
+      const focusable = modalRef.current.querySelector<HTMLElement>(
+        "input, textarea, select, button, [tabindex]",
+      );
+      focusable?.focus();
+    }
+  }, [open]);
+
   const modalRef = useRef<HTMLDivElement>(null);
+
   // Add closing management
   useCloseModal(modalRef as React.RefObject<HTMLElement>, onClose);
+
   if (!open) return null;
+
+  // Handle form submission via Enter key or submit button
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit?.();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      onSubmit?.();
+    }
+  };
+
   return (
     <div
       className="fixed inset-0 flex items-center justify-center z-50"
@@ -34,8 +61,14 @@ export const Modal: React.FC<ModalProps> = ({
             {title}
           </h2>
         )}
-        {/* Element children */}
-        {children}
+        {/* Element children wrapped in form */}
+        <form
+          onSubmit={handleFormSubmit}
+          onKeyDown={handleKeyDown}
+          className="space-y-3"
+        >
+          {children}
+        </form>
       </div>
     </div>
   );
