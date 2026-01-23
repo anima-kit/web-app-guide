@@ -8,8 +8,8 @@ import { TodoFormModalProps } from "@/types/todo";
 // Reusable pop-up form modal for adding, editing (etc.) todos.
 export const TodoFormModal: React.FC<TodoFormModalProps> = ({
   open, // Track open status
-  onClose, // Called when closed
   initialText = "", // Initial text for text input form
+  onClose, // Called when closed
   onSubmit, // Called when form submitted
 }) => {
   // Text input
@@ -17,10 +17,10 @@ export const TodoFormModal: React.FC<TodoFormModalProps> = ({
   // Reusable hook for forms
   const { values, setField } = useForm({ text: initialText }, async () => {});
   // Called when form submitted
-  const formHandle = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     await onSubmit(values.text.trim());
     setField("text", "");
+    onClose();
   };
 
   // Focus textbox when form opens
@@ -36,27 +36,26 @@ export const TodoFormModal: React.FC<TodoFormModalProps> = ({
       open={open}
       onClose={onClose}
       title={initialText ? "Edit Todo" : "Add New Todo"}
+      onSubmit={handleSubmit}
     >
-      <form onSubmit={formHandle} className="space-y-3">
-        {/* Text input field */}
-        <TextInput
-          ref={inputRef}
-          type="text"
-          value={values.text}
-          onChange={(e) => setField("text", e.target.value)}
-          placeholder="Todo text"
-          required // Alert message if not given
-        />
-        {/* Cancel and save buttons */}
-        <div className="flex justify-end space-x-2">
-          <Button type="button" onClick={onClose} variant="secondary">
-            Cancel
-          </Button>
-          <Button type="submit" variant="primary">
-            {initialText ? "Save" : "Add"}
-          </Button>
-        </div>
-      </form>
+      {/* Text input field */}
+      <TextInput
+        ref={inputRef}
+        type="text"
+        value={values.text}
+        onChange={(e) => setField("text", e.target.value)}
+        placeholder="Todo text"
+        required // Alert message if not given
+      />
+      {/* Cancel and save buttons */}
+      <div className="flex justify-end space-x-2">
+        <Button type="button" onClick={onClose} variant="secondary">
+          Cancel
+        </Button>
+        <Button type="submit" variant="primary">
+          {initialText ? "Save" : "Add"}
+        </Button>
+      </div>
     </Modal>
   );
 };

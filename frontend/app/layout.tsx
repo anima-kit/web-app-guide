@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ApolloWrapper from "@/components/apollo/ApolloWrapper";
+import { ThreadProvider } from "@/context/ThreadContext";
 import { ApolloWrapperProps } from "@/types/apollo";
 
 const geistSans = Geist({
@@ -19,11 +20,14 @@ export const metadata: Metadata = {
 };
 
 // Use ApolloWrapper to wrap all children in ApolloProvider with proper client
+// Use ThreadProvider to wrap all children with appropriate chat thread context
 export default function RootLayout({ children }: ApolloWrapperProps) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <ApolloWrapper>{children}</ApolloWrapper>
+        <ThreadProvider>
+          <ApolloWrapper>{children}</ApolloWrapper>
+        </ThreadProvider>
       </body>
     </html>
   );

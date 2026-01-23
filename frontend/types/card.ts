@@ -1,15 +1,15 @@
 // Type for properties to pass to generic card
 export interface CardProps {
-  title?: string | React.ReactNode;
   children: React.ReactNode;
+  title?: string | React.ReactNode;
   actions?: React.ReactNode;
-  onClick?: () => void;
   className?: string;
+  onClick?: () => void;
 }
 
 // Type for properties to pass to generic add card
 export interface AddCardProps {
   children: React.ReactNode;
-  onClick?: () => void;
   className?: string;
+  onClick?: () => void;
 }

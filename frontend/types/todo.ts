@@ -36,8 +36,8 @@ export interface TodosListProps {
 // Type for properties to pass to todo form
 export interface TodoFormModalProps {
   open: boolean;
-  onClose: () => void;
   initialText?: string;
+  onClose: () => void;
   onSubmit: (text: string) => Promise<void>;
 }
 

@@ -1,9 +1,12 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useWarmUpAgent } from "@/langchain/useWarmUpAgent";
 
 // Next's default home page when using create next app
 // with a few changes
 export default function Home() {
+  useWarmUpAgent();
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -18,7 +21,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           {/* More appropriate description for our app */}
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            A simple web app to show how to integrate Go + Next.
+            A simple web app to show how to integrate Go + LangChain + Next.
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Looking for a starting point or more instructions? Head over to{" "}
@@ -37,6 +40,19 @@ export default function Home() {
             </a>{" "}
             center.
           </p>
+        </div>
+
+        {/* Button to view agent */}
+        <div className="mt-8 flex flex-row gap-4">
+          <Link href="/agent" passHref>
+            <button
+              type="button"
+              className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+              aria-label="Talk with Agent"
+            >
+              Talk with Agent
+            </button>
+          </Link>
         </div>
 
         {/* Button to view todos */}
