@@ -1,7 +1,7 @@
 import { Panel } from "@/components/message/Panel";
 import { ToolCallPanelProps } from "@/types/panel";
 
-// Component for tool call panel 
+// Component for tool call panel
 // Can show/hide arguments used in tool call
 export const ToolCallPanel = ({ args }: ToolCallPanelProps) => {
   return (

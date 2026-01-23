@@ -11,7 +11,7 @@ export default function AgentPage() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/agent", label: "Agent" },
-    { href: "/todos", label: "Todo"},
+    { href: "/todos", label: "Todo" },
   ];
   return (
     <div className="flex">

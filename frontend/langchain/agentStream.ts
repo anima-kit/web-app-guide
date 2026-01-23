@@ -35,7 +35,7 @@ export async function* runAgentStream(
     { messages: [{ role: "user", content: userPrompt }] },
     { configurable: { thread_id: threadId }, streamMode: "updates" },
   )) {
-    const [_, payload] = Object.entries(chunk)[0];
+    const [, payload] = Object.entries(chunk)[0];
     if (!payload?.messages) continue;
 
     for (const msg of payload.messages) {

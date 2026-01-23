@@ -40,7 +40,7 @@ export const AgentWrapper = ({ onClose }: AgentWrapperProps) => {
     <div className="flex h-full">
       {/* Sidebar for chat threads */}
       <div className="w-1/5">
-      <ThreadsList />
+        <ThreadsList />
       </div>
       {/* Main chat area */}
       <div className="flex flex-col flex-1 relative overflow-hidden">

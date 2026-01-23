@@ -11,7 +11,7 @@ import { UpdateCheckpointRequest } from "@/types/memory";
 // Get agent checkpointer
 const checkpointer = agentCheckpointer;
 // Create API endpoint to update agent checkpointer
-// Updates will always just delete appropriate messages 
+// Updates will always just delete appropriate messages
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as UpdateCheckpointRequest;

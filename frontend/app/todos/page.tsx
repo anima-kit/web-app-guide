@@ -9,11 +9,11 @@ import SideNav from "@/components/nav/SideNav";
 
 // Page where we can view and manage our todos
 export default function TodosPage() {
-  useWarmUpAgent();  
+  useWarmUpAgent();
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/agent", label: "Agent" },
-    { href: "/todos", label: "Todo"},
+    { href: "/todos", label: "Todo" },
   ];
   // Use the GraphQL query to get our todos
   const { data, loading, error } = useTodos();
@@ -28,7 +28,10 @@ export default function TodosPage() {
       <main className="ml-64 flex-1 p-4">
         <h2 className="text-2xl font-bold mb-4">Todos</h2>
         {/* Component for pop-up form to add todos */}
-        <AddTodoModal open={showAddTodo} onClose={() => setShowAddTodo(false)} />
+        <AddTodoModal
+          open={showAddTodo}
+          onClose={() => setShowAddTodo(false)}
+        />
         {/* Component to list all our todos */}
         <TodosList
           todos={data?.todos}

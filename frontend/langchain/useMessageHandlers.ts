@@ -9,7 +9,7 @@ import { updateCheckpoint } from "@/langchain/updateCheckpoint";
 import { MessageProps } from "@/types/messages";
 
 // Hook for all message handling
-// Used for sending user input messages, 
+// Used for sending user input messages,
 // refreshing assistant messages, editing user messages, and deleting messages
 export function useMessageHandlers(
   messages: MessageProps[],
