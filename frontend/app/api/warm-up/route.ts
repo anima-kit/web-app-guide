@@ -8,7 +8,7 @@ export async function GET() {
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (err) {
     console.error("Warm-up failed", err);
-    return new Response(JSON.stringify({ error: String(err) }), {
+    return new Response(JSON.stringify({ error: "Warm-up failed" }), {
       status: 500,
     });
   }
