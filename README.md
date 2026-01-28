@@ -51,7 +51,7 @@ Using Next makes setting up a project *ridiculously easy*. With one command, we 
 1.  Create your Next project: 
 
     ```
-    npx create next-app@latest frontend --yes
+    npx create-next-app@latest frontend --yes
     ```
 
     > This will create a Next app (in `./frontend`) that uses Typescript for the source code, ESLint for linting, Tailwind CSS for easy component customization, the App Router for navigation, and Turbopack as the bundler.
