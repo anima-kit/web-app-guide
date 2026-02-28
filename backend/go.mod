@@ -7,7 +7,7 @@ tool github.com/99designs/gqlgen
 require (
 	github.com/99designs/gqlgen v0.17.86
 	github.com/rs/cors v1.11.1
-	github.com/vektah/gqlparser/v2 v2.5.31
+	github.com/vektah/gqlparser/v2 v2.5.32
 )
 
 require (
